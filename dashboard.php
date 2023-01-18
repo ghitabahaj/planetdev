@@ -15,7 +15,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="./ckeditor/ckeditor.js"></script>
+
     <title>Planet Dev | Dashboard</title>
 </head>
 
@@ -29,7 +32,7 @@
             <div class="list-group list-group-flush my-3">
                 <a href="#" class="list-group-item list-group-item-action  text-secondary "><i
                         class="uil uil-tachometer-fast fs-4 me-2"></i>dashboard</a>
-                <a href="#" class="list-group-item list-group-item-action  text-danger fw-bold"><i
+                <a href="logout.php" class="list-group-item list-group-item-action  text-danger fw-bold"><i
                         class="fas fa-power-off me-2"></i>Logout</a>
             </div>
         </div>
@@ -44,7 +47,7 @@
                 </div>
             </nav>
 
-            <div class="container-fluid px-4">
+            <div class="container-fluid px-4" id="content">
                 <div class="row g-3 my-2">
                     <div class="col-md-4">
                         <div class="p-3 box shadow-sm d-flex justify-content-around align-items-center rounded-pill back">
@@ -79,16 +82,36 @@
                     </div>
 
                     <div class="activity  mt-5 d-flex justify-content-between mb-3">
-                           <div class="title col-6">
+                           <div class="title">
                               <i class="uil uil-document-layout-left  fs-3"></i>
-                                        <span class="text fs-5 fw-bold ">My Articles</span>
+                                        <span class="text fs-5 fw-bold ">My Articles</span>                                     
                             </div>
                             <div class="ms-auto">
-					<button class="btn btn-block text-light mycolor rounded-pill"><i class="uil uil-plus text-white"></i>&emsp; Add an article</button>
+					<button class="btn btn-block text-light mycolor rounded-pill" ><i class="uil uil-plus text-white"></i>&emsp; Create an Article</button>
 				            </div>   
                      </div>
+                     <div class="d-flex">
+                        <div class="card-body table-responsive col-6 ">
+                            <table class="table table-bordered border-light text-center table-hover  ">
+                                 <tr class="bg-dark text-white">
+                                          <td>Title</td>
+                                          <td>Author</td>
+                                          <!-- <td>Category</td> -->
+                                          <td>Uploaded Date</td>
+                                          <td>View full details</td>
+                                          <td>Update / Delete</td>
+                                 </tr>
+                                <?php getAllarticles();?>
+</table>
                 
-                </div>
+                     </div>
+              <!-- <div id="myeditor">
+                     <textarea name="editor1"></textarea>
+                <script>
+                        CKEDITOR.replace( 'editor1' );
+                </script>
+              </div> -->
+             
 
 
 </div>
@@ -97,6 +120,9 @@
  
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+
+
     <script>
         var el = document.getElementById("wrapper");
         var toggleButton = document.getElementById("menu-toggle");

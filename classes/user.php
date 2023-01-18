@@ -8,13 +8,13 @@ class User{
     public $password;
     public $email;
     public $role;
-
-    public function __construct($username,$password,$email,$role)
+// 
+    public function __construct($username,$password,$email)
     {
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
-        $this->role = $role;
+        // $this->role = $role;
     }
 
     public static function loginUser($email,$password){
@@ -37,22 +37,11 @@ class User{
         unset($pdo);
     }
 
-    public static function checkUser($email){
-        $db_connect = new db_connect;
-        $pdo = $db_connect->connection();
-        $sql = "SELECT * FROM users WHERE email=:email";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':email', $email);
-        $stmt->execute();
-        $row = $stmt->fetch();
-        if(!empty($row)){
-            return $row;
-        }  
-        else{
-            return false;
-        }
-        unset($stmt);
-        unset($pdo);
+
+    public static function logout(){
+        session_destroy();
+        header('Location: signup.php');
+        exit;
     }
 
     }

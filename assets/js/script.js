@@ -28,3 +28,12 @@ function checkStuff() {
       msg.innerHTML = "";
     }
   }
+
+  let content=document.getElementById("content");
+
+
+function addArticle(){
+    content.innerHTML+='<textarea name="editor1"></textarea><script>CKEDITOR.replace( "editor1" );</script>';
+
+    
+  }
