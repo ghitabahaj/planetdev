@@ -14,9 +14,18 @@
 .mycolor2{
 color: #F7F5EB;
 }
-.btn{
-    background-color:#EAC7C7 ;
+
+a{
+  text-decoration: none;
+  color: white;
 }
+a:hover{
+  color: white;
+}
+
+/* .btn{
+    background-color:#EAC7C7 ;
+} */
 .back{
     background-color: #f0ebeb81;
 }

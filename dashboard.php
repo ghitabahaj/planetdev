@@ -1,6 +1,6 @@
 <?php 
   
-//   include_once './autoloader.php';
+  include_once './autoloader.php';
   include_once './assets/php/scripts.php';
 
 ?>
@@ -27,8 +27,9 @@
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 fs-4 fw-bold text-uppercase border-bottom"><i
-                    class="uil uil-desktop-cloud-alt fs-4 me-2"></i>Planet Dev <br>  <span class="fs-3 mycolor1 "> Hello! 
-                      </span> </div>
+                    class="uil uil-desktop-cloud-alt fs-4 me-2"></i>Planet Dev <br>  <span class="fs-3 mycolor1 "> Hello! <br>ADMIN
+            
+                      </span></div>
             <div class="list-group list-group-flush my-3">
                 <a href="#" class="list-group-item list-group-item-action  text-secondary "><i
                         class="uil uil-tachometer-fast fs-4 me-2"></i>dashboard</a>
@@ -43,7 +44,6 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4 ">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left mycolor fs-4 me-3" id="menu-toggle"></i>
-                    <!-- <h2 class="fs-2 m-0"> Admin Dashboard</h2> -->
                 </div>
             </nav>
 
@@ -53,7 +53,7 @@
                         <div class="p-3 box shadow-sm d-flex justify-content-around align-items-center rounded-pill back">
                         <i class="uil uil-users-alt fs-1 mycolor1 "></i>
                             <div>
-                                <h3 class="fs-2 mycolor1">10</h3>
+                                <h3 class="fs-2 mycolor1">0</h3>
                                 <p class="fs-5 mycolor1">Users</p>
                             </div>                  
                         </div>
@@ -63,9 +63,10 @@
                         <div class="p-3 box shadow-sm d-flex justify-content-around align-items-center rounded-pill back">
                         <i class="uil uil-document-layout-left fs-1 mycolor1 "></i>
                             <div>
-                                <h3 class="fs-2 mycolor1">20</h3>
+                                <h3 class="fs-2 mycolor1"> <?php echo Article::nbrArticles();?> </h3>
                                 <p class="fs-5 mycolor1">Articles</p>
                             </div>
+                            
                             
                         </div>
                     </div>
@@ -74,7 +75,7 @@
                         <div class="p-3 box shadow-sm d-flex justify-content-around align-items-center rounded-pill back"> 
                             <i class="uil uil-pen fs-1 mycolor1 "></i>
                             <div>
-                                <h3 class="fs-2 mycolor1">5</h3>
+                                <h3 class="fs-2 mycolor1">1</h3>
                                 <p class="fs-5 mycolor1">Authors</p>
                             </div>
                            
@@ -86,37 +87,89 @@
                               <i class="uil uil-document-layout-left  fs-3"></i>
                                         <span class="text fs-5 fw-bold ">My Articles</span>                                     
                             </div>
+                            <div class="input-group ms-5 w-25">
+                        <input type="search" class="form-control rounded " placeholder="Search" aria-label="Search" aria-describedby="search-addon" id="search-input" />
+                        <button type="button" class="btn btn-secondary  ms-2 rounded  border-0" >search</button>
+                      </div>
                             <div class="ms-auto">
-					<button class="btn btn-block text-light mycolor rounded-pill" ><i class="uil uil-plus text-white"></i>&emsp; Create an Article</button>
+					<button class="btn btn-dark text-light mycolor rounded-pill" ><i class="uil uil-plus text-white"></i> <a href="Addarticle.php">&emsp; Create an Article</a></button>
 				            </div>   
                      </div>
                      <div class="d-flex">
                         <div class="card-body table-responsive col-6 ">
                             <table class="table table-bordered border-light text-center table-hover  ">
-                                 <tr class="bg-dark text-white">
+                                 <thead class="bg-dark text-white">
                                           <td>Title</td>
                                           <td>Author</td>
                                           <!-- <td>Category</td> -->
                                           <td>Uploaded Date</td>
                                           <td>View full details</td>
-                                          <td>Update / Delete</td>
-                                 </tr>
+                                          <td>Update</td>
+                                          <td>Delete</td>
+                                 </thead>
                                 <?php getAllarticles();?>
-</table>
-                
+</table>   
                      </div>
-              <!-- <div id="myeditor">
-                     <textarea name="editor1"></textarea>
-                <script>
-                        CKEDITOR.replace( 'editor1' );
-                </script>
-              </div> -->
-             
 
 
 </div>
 </div>
 </div>
+<div class="modal fade" id="modal-article-update">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form action="./assets/php/scripts.php" method="POST" name="update-article">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="update-title">Update Article</h5>
+                                    <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+                                </div>
+                                <div class="modal-body">
+                                        <input type="hidden" id="id-update" name="id-update" value="">
+                                        <label class="form-label">Title</label>
+								       <input type="text" class="form-control"  id="article-title-update" name="article-title-update"></input>
+							    </div>
+                                <div class="modal-body">
+                                        <label class="form-label">Author</label>
+								       <input type="text" class="form-control"  id="article-author-update"  name="article-author-update"></input>
+							    </div>
+                                <div class="modal-body">
+                                    <textarea class="form-control" name="editor1" id="editor1"></textarea>
+                                    <script>
+                                        CKEDITOR.replace( 'editor1' );
+                                    </script>
+                                </div>
+                                
+                                <div class="modal-footer">
+                                    <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
+                                    <button type="submit" name="updateArticle" class="btn btn-warning text-white " id="article-update-btn">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+        </div>
+
+        <!-- view article -->
+ <div class="modal fade bd-example-modal-xl shadow-sm" id="modal-article-view" tabindex="-1"  role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-xl ">
+    <div class="modal-content ">
+      <div class=" modal-header">
+        <h5 class="modal-title">View Article</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class=" modal-body">
+      <input type="hidden" id="id-view" name="id-view" value="">
+      <h3 class="text-center mycolor fs-3 fw-bold" id="title-view"></h3>
+      <section id="article-content">
+
+      </section>
+      </div>
+      <div class="w-100 modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
  
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
@@ -130,6 +183,7 @@
         toggleButton.onclick = function () {
             el.classList.toggle("toggled");
         };
+
     </script>
 </body>
 

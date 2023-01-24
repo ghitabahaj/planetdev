@@ -52,7 +52,7 @@
 
                 <div class="d-flex justify-content-center">
                   <button type="submit" name="loginuser"
-                    class=" btn btn-block text-light mycolor" id="signup-btn" >Sign in</button>
+                    class=" btn btn-dark btn-block text-light mycolor" id="signup-btn" >Sign in</button>
                 </div>
               </form>
 

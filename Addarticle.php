@@ -1,5 +1,4 @@
-<?php 
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,68 +14,65 @@
 <body>
 
 <div class="container">
-    <h2 class="text-center fw-bold"><i class="uil uil-edit fw-3"></i>Create a new Article</h2>
+    <p class="text-center fs-3 fw-bold"><i class="uil uil-edit fw-3"></i>  Create a new Article</p>
    <hr>
    <div>
-    <?php 
-     if (isset($_REQUEST['save'])){
-           require "./classes/article.php";
-           $objArticle= new Article();
-           $objArticle->title=$_REQUEST['title'];
-           $objArticle->text=$_REQUEST['editor1'];
-           $objArticle->author=$_REQUEST['author'];
-           $objArticle->createdOn=date('Y-m-d H:i:s');
-
-           if($objArticle->saveArticle()){
-             echo '<div class="alert alert-success">
-             <div id="result">Inserted succefully.</div></div>';
-           }
-     }
-    
-    ?>
    </div>
 </div>
 
-<div class="">
-    <form id="article-frm" method="post" action="" class="">
+<div class="col-6 m-auto">
+    <form id="article-frm" method="post" action="./assets/php/scripts.php" class="">
+        <div id="listElement">
         <input type="hidden" name="article_id" id="article_id">
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon addon-diff-color">
-                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span  class="bi bi-pencil-fill"></span>
                 </div>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Enter article title">
+                <input type="text" class="form-control" id="title" name="title[]" placeholder="Enter article title">
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group my-3">
             <div class="input-group">
                  <div class="input-group-addon addon-diff-color">
                  <span class="glyphicon glyphicon-user"></span>
                  </div>
-                 <input type="text"class="form-control" id="author" name="author" placeholder="Enter author name" >
+                 <input type="text" class="form-control" id="author" name="author[]" placeholder="Enter author name" >
             </div>
         </div>
-
+    </div>
         <div class="form-group">
-            <textarea class="form-control" name="editor1" >Article Description</textarea>
+            <textarea class="form-control" name="editor1[]" id="text" ></textarea>
             <script>
-                        CKEDITOR.replace( 'editor1' );
-                </script>
+             CKEDITOR.replace( 'editor1[]' );
+            </script>
         </div>
-
-        <div class="form-group">
-            <input type="submit" value="Create Article" class="btn btn-danger btn-block" id="saveArticle" name="save">
-        </div>
-
 
         
+        
+        
+        <div class="my-3" id="copyarticle">
 
-
-
+        </div>
+        <div class="form-group d-flex justify-content-between mt-3">
+            <button type="button" class="btn btn-success   w-25" id="addnew">add article</button>
+            <button type="submit" class="btn btn-danger    w-25 " id="saveArticle" name="save">Create Article(s)</button>
+        </div>
+        
     </form>
+    
 
 </div>
     
+
+
+
+
+<script src="./assets/js/addarticle.js"></script>
+<script src="./assets/js/script.js"></script>
+<script src="./ckeditor/ckeditor.js"></script>
+
+
 </body>
 </html>

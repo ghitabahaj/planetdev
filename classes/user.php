@@ -1,7 +1,7 @@
 <?php 
 require __DIR__.'/../autoloader.php';
 
-// session_start();
+
 
 class User{
     public $username;
@@ -27,7 +27,6 @@ class User{
         $stmt->execute();
         $row = $stmt->fetch();
         if(!empty($row)){
-            // $_SESSION['profile']=$row;
             return $row;
         }  
         else{

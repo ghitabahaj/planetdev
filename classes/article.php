@@ -33,6 +33,45 @@ class Article{
         return $stmt->fetchAll();
     }
 
+    public static function deleteArticle($id){
+
+        $db_connect = new db_connect;
+        $pdo = $db_connect->connection();
+        $stmt = $pdo->prepare("DELETE FROM articles WHERE id = :id");
+        $stmt->bindValue(':id',$id);
+        $stmt->execute();
+      }
+
+    public static function nbrArticles(){
+        $db_connect = new db_connect;
+        $pdo = $db_connect->connection();
+        $stmt = $pdo->prepare("SELECT COUNT(*) FROM articles ");
+        $stmt->execute();
+        return $stmt->fetchColumn();
+
+    }
+ 
+    
+  public static function updateArticle($id,$text,$title,$author,$date){
+    $db_connect = new db_connect;
+    $pdo = $db_connect->connection();
+    $stmt = $pdo->prepare("UPDATE articles SET text = :text , title=:title , author=:author , CreatedOn=:CreatedOn WHERE id = :id");
+    $stmt->bindValue(':text',$text);
+    $stmt->bindValue(':title',$title);
+    $stmt->bindValue(':author',$author);
+    $stmt->bindValue(':CreatedOn', $date);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+}
+
+public static function DisplayArticle($id){
+    $db_connect = new db_connect;
+    $pdo = $db_connect->connection();
+    $stmt = $pdo->prepare('SELECT  FROM articles WHERE id=:id');
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    return $stmt->fetch();
+}
 
 
 
