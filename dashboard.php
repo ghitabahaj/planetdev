@@ -91,6 +91,7 @@
                         <input type="search" class="form-control rounded " placeholder="Search" aria-label="Search" aria-describedby="search-addon" id="search-input" />
                         <button type="button" class="btn btn-secondary  ms-2 rounded  border-0" >search</button>
                       </div>
+
                             <div class="ms-auto">
 					<button class="btn btn-dark text-light mycolor rounded-pill" ><i class="uil uil-plus text-white"></i> <a href="Addarticle.php">&emsp; Create an Article</a></button>
 				            </div>   

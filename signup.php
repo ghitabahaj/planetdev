@@ -1,10 +1,8 @@
 <?php 
-  
-//   include_once './autoloader.php';
-  include_once './assets/php/scripts.php';
-
-  
+include_once './assets/php/scripts.php';
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +27,7 @@
              <p class="fs-4 fw-bold text-secondary">Admin<span class="mycolor1 fs-4">Dashboard</span></p>
               <p class=" text-center mb-5 mycolor fs-3 fw-bold">Sign in now!</p>
               <span class="text-danger fw-bold m-2" id="msg"></span>
-              <form action="./assets/php/scripts.php" method="POST" name="form1" id="mysignupform" onsubmit="return checkStuff()">
+              <form action="./assets/php/scripts.php" method="POST" name="form1" id="mysignupform" data-parsley-validate>
               <?php if (isset($_SESSION['dataInvalid'])): ?>
 				<div class="alert alert-danger alert-dismissible fade show">
 				<strong>Oops !</strong>
@@ -42,12 +40,12 @@
 			<?php endif ?>
                 <div class="form-outline mb-4 ">
                   <label class="form-label mycolor1 fw-bold" >Your Email</label>
-                  <input type="email"  class="form-control fs-5  " id="email" name="email"/>          
+                  <input type="email"  class="form-control fs-5  " id="email" name="email" data-parsley-type="email" required/>          
                 </div>
 
                 <div class="form-outline mb-4">
                  <label class="form-label mycolor1 fw-bold" >Password</label>
-                  <input type="password"  class="form-control fs-5 " id="pass" name="password"/>
+                  <input type="password"  class="form-control fs-5 " id="pass" name="password" required/>
                 </div>
 
                 <div class="d-flex justify-content-center">
@@ -65,5 +63,7 @@
 
     <script src="./assets/js/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js" integrity="sha512-a6ctI6w1kg3J4dSjknHj3aWLEbjitAXAjLDRUxo2wyYmDFRcz2RJuQr5M3Kt8O/TtUSp8n2rAyaXYy1sjoKmrQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./assets/js/parsley.js"></script>
+  </body>
 </html>

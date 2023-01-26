@@ -21,7 +21,7 @@
 </div>
 
 <div class="col-6 m-auto">
-    <form id="article-frm" method="post" action="./assets/php/scripts.php" class="">
+    <form id="article-frm" method="post" action="./assets/php/scripts.php" data-parsley-validate>
         <div id="listElement">
         <input type="hidden" name="article_id" id="article_id">
         <div class="form-group">
@@ -29,7 +29,7 @@
                 <div class="input-group-addon addon-diff-color">
                     <span  class="bi bi-pencil-fill"></span>
                 </div>
-                <input type="text" class="form-control" id="title" name="title[]" placeholder="Enter article title">
+                <input type="text" class="form-control" id="title" name="title[]" placeholder="Enter article title"  required >
             </div>
         </div>
 
@@ -38,12 +38,12 @@
                  <div class="input-group-addon addon-diff-color">
                  <span class="glyphicon glyphicon-user"></span>
                  </div>
-                 <input type="text" class="form-control" id="author" name="author[]" placeholder="Enter author name" >
+                 <input type="text" class="form-control" id="author" name="author[]" placeholder="Enter author name" required >
             </div>
         </div>
     </div>
         <div class="form-group">
-            <textarea class="form-control" name="editor1[]" id="text" ></textarea>
+            <textarea class="form-control" name="editor1[]" id="text"  required></textarea>
             <script>
              CKEDITOR.replace( 'editor1[]' );
             </script>
@@ -72,6 +72,8 @@
 <script src="./assets/js/addarticle.js"></script>
 <script src="./assets/js/script.js"></script>
 <script src="./ckeditor/ckeditor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="./assets/js/parsley.js"></script>
 
 
 </body>

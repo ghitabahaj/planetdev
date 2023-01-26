@@ -37,7 +37,7 @@ function logOut(){
 function getAllarticles(){
     $req=Article::showArticles();
     foreach($req as $row){
-        $date=substr($row['CreatedOn'],0,-7);
+        $date=substr($row['CreatedOn'],0,10);
         // var_dump($date);
         // die();
         ?>
